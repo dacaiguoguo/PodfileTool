@@ -48,3 +48,4 @@ xcuserdata
 rakelib/doccoverage/
 coverage/
 .coveralls.yml
+podfile_from_ruby.json
