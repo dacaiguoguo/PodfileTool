@@ -49,3 +49,5 @@ rakelib/doccoverage/
 coverage/
 .coveralls.yml
 podfile_from_ruby.json
+Podfile.json
+.dat.nosync20a8.4b6Lgs
