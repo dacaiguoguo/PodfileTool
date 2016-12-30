@@ -19,9 +19,25 @@ class PodfileTool
   # Arguments:
   #   path: (path_of_Podfile)
   def self.outputJson(path)
-    podfile_hash = Pod::Podfile.from_file(path).to_hash
-    podfile_json = JSON.pretty_generate(podfile_hash)
-    puts podfile_json
+    if path
+      if path.empty?
+        puts 'need good Podfile Path!!!'
+      else
+        if File.exist?(path)
+          if File.file?(path)
+            podfile_hash = Pod::Podfile.from_file(path).to_hash
+            podfile_json = JSON.pretty_generate(podfile_hash)
+            podfile_json
+          else
+            puts 'Podfile Path is not a file!!!'
+          end
+        else
+          puts 'need exist Podfile Path!!!'
+        end
+      end
+    else
+      puts 'need Podfile Path!!!'
+    end
   end
 
   def self.outputJsonFile(path)
