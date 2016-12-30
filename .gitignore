@@ -26,3 +26,25 @@ Gemfile.lock
 
 # RVM
 .rvmrc
+
+*.swp
+*.log
+*.bundle
+*.o
+*.rbc
+.rbenv-version
+ext/xcodeproj/.RUBYARCHDIR.time
+ext/xcodeproj/extconf.h
+ext/xcodeproj/conftest.dSYM
+ext/xcodeproj/Makefile
+ext/xcodeproj/siteconf*.rb
+*.gem
+.yardoc
+doc
+tmp
+.DS_Store
+xcuserdata
+*.xcscmblueprint
+rakelib/doccoverage/
+coverage/
+.coveralls.yml
