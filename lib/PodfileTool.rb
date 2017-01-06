@@ -50,4 +50,22 @@ class PodfileTool
         puts "Unable to open file!"
     end
   end
+  #
+  # share pod project scheme，Share a User Scheme. Basically this method move the xcscheme file from the xcuserdata folder to xcshareddata folder.
+  #Arguments:
+  #  pods_project_path:(pods_project_path)
+  # Example3:
+  # >> PodfileTool.sharePodScheme("/path_of_Pod_project")
+  # => {json}
+  #
+  #
+  def self.sharePodScheme(pods_project_path)
+    pod_name = pods_project_path.split('/')[-4]
+    project = Xcodeproj::Project.open(pods_project_path)
+    schemes  = Xcodeproj::Project.schemes(pods_project_path)
+    unless schemes.include? pod_name
+      Xcodeproj::XCScheme.share_scheme(project.path, pod_name)
+    end
+    "Success share #{pod_name}"
+  end
 end
