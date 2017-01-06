@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'commander/import'
+require 'PodfileTool'
+
+program :name, 'podtool'
+program :version, '0.0.1'
+program :description, 'pod tools set'
+
+command :parse do |c|
+  c.syntax = 'podtool parse [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    # Do something or c.when_called Podtool::Commands::Parse
+    puts PodfileTool.outputJson(args[0])
+  end
+end
+
+command :share do |c|
+  c.syntax = 'podtool share [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    # Do something or c.when_called Podtool::Commands::Share
+  end
+end
+
