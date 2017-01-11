@@ -68,4 +68,16 @@ class PodfileTool
     end
     "Success share #{pod_name}"
   end
+
+  def self.removeTarget(project_path, target_to_remove)
+    project = Xcodeproj::Project.open(project_path)
+    project.targets.each do |target|
+      puts target.name
+      if target.name == target_to_remove
+          target.remove_from_project
+          puts "#{target.name} did remove from project!!"
+      end
+    end
+    project.save
+  end
 end

@@ -15,7 +15,6 @@ command :parse do |c|
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
   c.action do |args, options|
-    # Do something or c.when_called Podtool::Commands::Parse
     puts PodfileTool.outputJson(args[0])
   end
 end
@@ -27,7 +26,21 @@ command :share do |c|
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
   c.action do |args, options|
-    # Do something or c.when_called Podtool::Commands::Share
+    puts PodfileTool.sharePodScheme(ARGV[1])
   end
 end
+
+command :removetarget do |c|
+  c.syntax = 'podtool removetarget [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    PodfileTool.removeTarget(args[0], args[1])
+  end
+end
+
+
+
 
