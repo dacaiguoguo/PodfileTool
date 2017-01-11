@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'PodfileTool'
-  s.version     = '0.0.5'
+  s.version     = '0.0.6'
   s.date        = '2016-12-30'
   s.summary     = "PodfileTool!"
   s.description = "output Cocoapods Podfile to Json"
@@ -11,4 +11,5 @@ Gem::Specification.new do |s|
     'http://rubygems.org/gems/PodfileTool'
   s.license       = 'MIT'
   s.executables << 'PodfileTool'
+  s.executables << 'podtool'
 end
