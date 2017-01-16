@@ -56,7 +56,7 @@ class PodfileTool
   #  pods_project_path:(pods_project_path)
   # Example3:
   # >> PodfileTool.sharePodScheme("/path_of_Pod_project")
-  # => {json}
+  # => "Success share #{pod_name}"
   #
   #
   def self.sharePodScheme(pods_project_path)
@@ -68,7 +68,16 @@ class PodfileTool
     end
     "Success share #{pod_name}"
   end
-
+  #
+  # remove a target of project
+  #Arguments:
+  #  project_path:(project_path)
+  #  target_to_remove:(target_to_remove)
+  # Example4:
+  # >>  PodfileTool.removeTarget(args[0], args[1])
+  # => puts "#{target.name} did remove from project!!"
+  #
+  #
   def self.removeTarget(project_path, target_to_remove)
     project = Xcodeproj::Project.open(project_path)
     project.targets.each do |target|
@@ -80,4 +89,33 @@ class PodfileTool
     end
     project.save
   end
+  #
+  # remove a target frame_search_path of project
+  #Arguments:
+  #  project_path:(project_path)
+  #  target_to_remove:(target_to_remove)
+  #  frame_search_path:(frame_search_path)
+  # Example4:
+  # >>  PodfileTool.removeTargetFrameSearchPath(args[0], args[1], args[1])
+  # => puts search_paths
+  #
+  #
+  def self.removeTargetFrameSearchPath(project_path, target_to_remove, frame_search_path)
+    project = Xcodeproj::Project.open(project_path)
+    project.targets.each do |target|
+      if target.name == target_to_remove
+          puts target.name
+          target.build_configurations.each { |configuration|
+            search_paths = configuration.build_settings['FRAMEWORK_SEARCH_PATHS'] ||= '$(inherited)'
+            if search_paths.is_a? Array
+              search_paths.delete_if { |e| e == frame_search_path}
+            end
+            puts search_paths
+          }
+      end
+    end
+    project.save
+  end
+
+
 end

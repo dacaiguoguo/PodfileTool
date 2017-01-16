@@ -41,6 +41,20 @@ command :removetarget do |c|
   end
 end
 
+command :removeTargetFrameSearchPath do |c|
+  c.syntax = 'podtool removeTargetFrameSearchPath [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    PodfileTool.removeTarget(args[0], args[1])
+  end
+end
+
+
+
+
 
 
 
