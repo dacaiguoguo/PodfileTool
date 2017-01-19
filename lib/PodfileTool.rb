@@ -1,5 +1,6 @@
 require 'cocoapods'
 require 'json'
+require 'xcodeproj'
 require 'cocoapods-core'
 
 class PodfileTool
@@ -117,5 +118,14 @@ class PodfileTool
     project.save
   end
 
+    def self.removePhase(project_path, target_to_remove, p_toremove)
+    project = Xcodeproj::Project.open(project_path)
+    project.targets.each do |target|
+      puts target.name
+      puts "aa"
+
+    end
+    project.save
+  end
 
 end
