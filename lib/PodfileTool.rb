@@ -123,7 +123,11 @@ class PodfileTool
     project.targets.each do |target|
       puts target.name
       puts "aa"
-
+      if target.name == target_to_remove
+        target.build_phases.each do |aP|
+          puts aP
+        end
+      end
     end
     project.save
   end
