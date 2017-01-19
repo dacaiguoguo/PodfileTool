@@ -121,15 +121,19 @@ class PodfileTool
     def self.removePhase(project_path, target_to_remove, p_toremove)
     project = Xcodeproj::Project.open(project_path)
     project.targets.each do |target|
-      puts target.name
-      puts "aa"
+      # puts target.name
       if target.name == target_to_remove
+        # puts target.methods
         target.build_phases.each do |aP|
-          puts aP
+          puts aP.display_name
+          if aP.display_name == p_toremove
+            aP.remove_from_project
+            puts "#{target.name} #{aP} did remove"
+          end
+          project.save
         end
       end
     end
-    project.save
   end
 
 end
