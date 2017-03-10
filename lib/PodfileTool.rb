@@ -69,6 +69,23 @@ class PodfileTool
     end
     "Success share #{pod_name}"
   end
+
+  def self.shareAllPodScheme(pods_project_path)
+    project = Xcodeproj::Project.open(pods_project_path)
+    schemes  = Xcodeproj::Project.schemes(pods_project_path)
+    project.targets.each { |e| 
+      if e.product_type == 'com.apple.product-type.framework' && !e.name.start_with?('Pod')
+        begin  
+          Xcodeproj::XCScheme.share_scheme(project.path, e.name)
+          puts "Success share #{e.name}" 
+        rescue => err  
+          puts "Fail share #{e.name}"   
+        end 
+      end
+    }
+    project.save
+  end
+
   #
   # remove a target of project
   #Arguments:
