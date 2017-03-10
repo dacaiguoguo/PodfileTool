@@ -14,7 +14,7 @@ project.save
 
 project_path = ARGV[0]
 project = Xcodeproj::Project.open(project_path)
-# puts project
+# puts projecta
 project.targets.each do |target|
   if target.name == 'mymm'
     target.dependencies.each { |e|  puts e.remove_from_project }
