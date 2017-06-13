@@ -2,6 +2,7 @@ require 'cocoapods'
 require 'json'
 require 'xcodeproj'
 require 'cocoapods-core'
+require 'uri'
 
 class PodfileTool
   # parse Cocoapods Podfile to json
@@ -150,6 +151,10 @@ class PodfileTool
         end
       end
     end
+  end
+
+  def self.urldecode(to)
+    puts URI.unescape(to)
   end
 
 end

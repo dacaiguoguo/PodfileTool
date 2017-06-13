@@ -75,6 +75,17 @@ command :removePhase do |c|
   end
 end
 
+command :ud do |c|
+  c.syntax = 'url decode [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    PodfileTool.urldecode(args[0])
+  end
+end
+
 
 
 
