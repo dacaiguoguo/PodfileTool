@@ -60,8 +60,7 @@ class PodfileTool
   # => "Success share #{pod_name}"
   #
   #
-  def self.sharePodScheme(pods_project_path)
-    pod_name = pods_project_path.split('/')[-4]
+  def self.sharePodScheme(pods_project_path, pod_name)
     project = Xcodeproj::Project.open(pods_project_path)
     schemes  = Xcodeproj::Project.schemes(pods_project_path)
     unless schemes.include? pod_name

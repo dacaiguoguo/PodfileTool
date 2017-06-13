@@ -5,7 +5,7 @@ require 'commander/import'
 require 'PodfileTool'
 
 program :name, 'podtool'
-program :version, '0.0.1'
+program :version, '0.0.3'
 program :description, 'pod tools set'
 
 command :parse do |c|
@@ -24,9 +24,10 @@ command :share do |c|
   c.summary = ''
   c.description = ''
   c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
+  c.option '--project-path', 'Some switch that does something'
+  c.option '--pod-name', 'Some switch that does something'
   c.action do |args, options|
-    puts PodfileTool.sharePodScheme(ARGV[1])
+    puts PodfileTool.sharePodScheme(args[0], args[1])
   end
 end
 
