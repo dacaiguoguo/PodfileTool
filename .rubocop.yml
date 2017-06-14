@@ -1,0 +1,16 @@
+# HashSyntax:
+#   EnforcedStyle: hash_rockets
+Style/AsciiComments:
+  Description: 'Use only ascii symbols in comments.'
+  StyleGuide: '#english-comments'
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false

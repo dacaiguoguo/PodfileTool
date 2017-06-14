@@ -14,7 +14,7 @@ command :parse do |c|
   c.description = ''
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
-  c.action do |args, options|
+  c.action do |args, _options|
     puts PodfileTool.outputJson(args[0])
   end
 end
@@ -26,7 +26,7 @@ command :share do |c|
   c.example 'description', 'command example'
   c.option '--project-path', 'Some switch that does something'
   c.option '--pod-name', 'Some switch that does something'
-  c.action do |args, options|
+  c.action do |args, _options|
     puts PodfileTool.sharePodScheme(args[0], args[1])
   end
 end
@@ -37,7 +37,7 @@ command :shareall do |c|
   c.description = ''
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
-  c.action do |args, options|
+  c.action do |_args, _options|
     PodfileTool.shareAllPodScheme(ARGV[1])
   end
 end
@@ -48,7 +48,7 @@ command :removetarget do |c|
   c.description = ''
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
-  c.action do |args, options|
+  c.action do |args, _options|
     PodfileTool.removeTarget(args[0], args[1])
   end
 end
@@ -59,7 +59,7 @@ command :removeTargetFrameSearchPath do |c|
   c.description = ''
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
-  c.action do |args, options| 
+  c.action do |args, _options|
     PodfileTool.removeTarget(args[0], args[1])
   end
 end
@@ -70,7 +70,7 @@ command :removePhase do |c|
   c.description = ''
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
-  c.action do |args, options|
+  c.action do |args, _options|
     PodfileTool.removePhase(args[0], args[1], args[2])
   end
 end
@@ -81,14 +81,7 @@ command :ud do |c|
   c.description = ''
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
-  c.action do |args, options|
+  c.action do |args, _options|
     PodfileTool.urldecode(args[0])
   end
 end
-
-
-
-
-
-
-

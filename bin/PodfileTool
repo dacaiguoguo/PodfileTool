@@ -2,8 +2,8 @@
 
 require 'PodfileTool'
 
-if ARGV[0] == "share"
-    puts PodfileTool.sharePodScheme(ARGV[1])
+if ARGV[0] == 'share'
+  puts PodfileTool.sharePodScheme(ARGV[1])
 else
-    puts PodfileTool.outputJson(ARGV[0])
+  puts PodfileTool.outputJson(ARGV[0])
 end
