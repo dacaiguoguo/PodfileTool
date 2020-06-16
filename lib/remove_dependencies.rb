@@ -1,5 +1,5 @@
 require 'xcodeproj'
-# ruby removeDe.rb pathof project
+# ruby remove_dependencies.rb <pathof project> <target name>
 
 project_path = ARGV.first
 to_remove_target_name = ARGV.last
