@@ -10,32 +10,32 @@ program :description, 'pod tools set'
 
 command :parse do |c|
   c.syntax = 'podtool parse [options]'
-  c.summary = ''
-  c.description = ''
-  c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
+  c.summary = 'parse Podfile to json'
+  c.description = 'parse Podfile to json use pod'
+  c.example 'description', 'podtool parse Example/Podfile'
+  c.option '--podfile FILE', 'Podfile path'
   c.action do |args, _options|
-    puts PodTool.output_json(args[0])
+    PodTool.output_json(_options.podfile)
   end
 end
 
 command :share do |c|
   c.syntax = 'podtool share [options]'
-  c.summary = ''
-  c.description = ''
-  c.example 'description', 'command example'
-  c.option '--project-path', 'Some switch that does something'
-  c.option '--pod-name', 'Some switch that does something'
+  c.summary = 'share one scheme of project'
+  c.description = 'share one scheme of project use xcodeproj gem'
+  c.example 'description', 'podtool share --project-path Pods/Pods.xcodeproj --pod-name KitPod'
+  c.option '--project-path', 'project path'
+  c.option '--pod-name', 'pod name'
   c.action do |args, _options|
-    puts PodTool.share_pod_scheme(args[0], args[1])
+    PodTool.share_pod_scheme(_options.project_path, _options.pod_name)
   end
 end
 
 command :shareall do |c|
   c.syntax = 'podtool shareall [options]'
-  c.summary = ''
-  c.description = ''
-  c.example 'description', 'command example'
+  c.summary = 'podtool shareall scheme'
+  c.description = 'podtool shareall scheme of project'
+  c.example 'description', 'podtool shareall --project-path Pods/Pods2.xcodeproj'
   c.option '--project-path FILE', 'Some switch that does something'
   c.action do |_args, _options|
     PodTool.share_all_pod_scheme(_options.project_path)
@@ -44,43 +44,47 @@ end
 
 command :removetarget do |c|
   c.syntax = 'podtool removetarget [options]'
-  c.summary = ''
-  c.description = ''
-  c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
+  c.summary = 'remove one target'
+  c.description = 'remove one target use xcodeproj'
+  c.example 'description', 'podtool removetarget --project-path Pods/Pods.xcodeproj --pod-name KitPod'
+  c.option '--project-path FILE', 'Some switch that does something'
+  c.option '--pod-name FILE', 'Some switch that does something'
   c.action do |args, _options|
-    PodTool.remove_target(args[0], args[1])
+    PodTool.remove_target(_options.project_path, _options.pod_name)
   end
 end
 
 command :removeTargetFrameSearchPath do |c|
   c.syntax = 'podtool removeTargetFrameSearchPath [options]'
-  c.summary = ''
-  c.description = ''
+  c.summary = 'remove one project target FRAMEWORK_SEARCH_PATHS special value'
+  c.description = 'remove one project target FRAMEWORK_SEARCH_PATHS special value use xcodeproj'
   c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
+  c.option '--project-path FILE', 'Some switch that does something'
+  c.option '--target-name FILE', 'Some switch that does something'
+  c.option '--rm-name FILE', 'Some switch that does something'
   c.action do |args, _options|
-    PodTool.remove_target_frame_search_path(args[0], args[1], args[2])
+    PodTool.remove_target_frame_search_path(_options.project_path, _options.target_name, _options.rm_name)
   end
 end
 
 command :removePhase do |c|
-  c.syntax = 'podtool removetarget [options]'
-  c.summary = ''
-  c.description = ''
+  c.syntax = 'podtool removePhase [options]'
+  c.summary = 'remove one project target one build_phases'
+  c.description = 'remove one project target one build_phases use Xcodeproj'
   c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
+  c.option '--project-path FILE', 'Some switch that does something'
+  c.option '--target-name FILE', 'Some switch that does something'
+  c.option '--rm-name FILE', 'Some switch that does something'
   c.action do |args, _options|
-    PodTool.remove_phase(args[0], args[1], args[2])
+    PodTool.remove_phase(_options.project_path, _options.target_name, _options.rm_name)
   end
 end
 
 command :ud do |c|
-  c.syntax = 'url decode [options]'
-  c.summary = ''
-  c.description = ''
+  c.syntax = 'url decode <org_url>'
+  c.summary = 'url decode'
+  c.description = 'url decode use ruby'
   c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
   c.action do |args, _options|
     PodTool.unescape(args[0])
   end

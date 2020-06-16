@@ -24,7 +24,7 @@ class PodTool
     if File.file?(path)
       podfile_hash = Pod::Podfile.from_file(path).to_hash
       podfile_json = JSON.pretty_generate(podfile_hash)
-      podfile_json
+      puts podfile_json
     else
       puts 'need Podfile Path!!!'
     end
@@ -45,11 +45,10 @@ class PodTool
     unless schemes.include? pod_name
       Xcodeproj::XCScheme.share_scheme(project.path, pod_name)
     end
-    "Success share #{pod_name}"
+    puts "Success share #{pod_name}"
   end
 
   def self.share_all_pod_scheme(pods_project_path)
-    puts "pods_project_path: #{pods_project_path}"
     project = Xcodeproj::Project.open(pods_project_path)
     project.targets.each do |e|
       begin
@@ -76,7 +75,6 @@ class PodTool
   def self.remove_target(project_path, target_to_remove)
     project = Xcodeproj::Project.open(project_path)
     project.targets.each do |target|
-      puts target.name
       if target.name == target_to_remove
         target.remove_from_project
         puts "#{target.name} did remove from project!!"
@@ -106,7 +104,6 @@ class PodTool
         if search_paths.is_a? Array
           search_paths.delete_if { |e| e == frame_search_path }
         end
-        puts "FRAMEWORK_SEARCH_PATHS:#{search_paths.class}"
         puts "FRAMEWORK_SEARCH_PATHS:#{search_paths}"
       end
     end
