@@ -49,6 +49,7 @@ class PodTool
   end
 
   def self.share_all_pod_scheme(pods_project_path)
+    puts "pods_project_path: #{pods_project_path}"
     project = Xcodeproj::Project.open(pods_project_path)
     project.targets.each do |e|
       next unless e.product_type == 'com.apple.product-type.framework' && !e.name.start_with?('Pod')

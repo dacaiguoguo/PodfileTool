@@ -36,9 +36,9 @@ command :shareall do |c|
   c.summary = ''
   c.description = ''
   c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
+  c.option '--project-path FILE', 'Some switch that does something'
   c.action do |_args, _options|
-    PodTool.share_all_pod_scheme(ARGV[1])
+    PodTool.share_all_pod_scheme(_options.project_path)
   end
 end
 
