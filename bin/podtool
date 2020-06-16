@@ -12,7 +12,7 @@ command :parse do |c|
   c.syntax = 'podtool parse [options]'
   c.summary = 'parse Podfile to json'
   c.description = 'parse Podfile to json use pod'
-  c.example 'description', 'podtool parse Example/Podfile'
+  c.example 'description', 'podtool parse --podfile Example/Podfile'
   c.option '--podfile FILE', 'Podfile path'
   c.action do |args, _options|
     PodTool.output_json(_options.podfile)
@@ -24,8 +24,8 @@ command :share do |c|
   c.summary = 'share one scheme of project'
   c.description = 'share one scheme of project use xcodeproj gem'
   c.example 'description', 'podtool share --project-path Pods/Pods.xcodeproj --pod-name KitPod'
-  c.option '--project-path', 'project path'
-  c.option '--pod-name', 'pod name'
+  c.option '--project-path FILE', 'project path'
+  c.option '--pod-name FILE', 'pod name'
   c.action do |args, _options|
     PodTool.share_pod_scheme(_options.project_path, _options.pod_name)
   end

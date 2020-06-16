@@ -120,9 +120,9 @@ class PodTool
         puts atarget.display_name
         if atarget.display_name == p_toremove
           atarget.remove_from_project
-          puts "#{target.name} #{aP} did remove"
+          project.save
+          puts "#{target.name} #{p_toremove} did remove"
         end
-        project.save
       end
     end
   end
