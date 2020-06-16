@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = 'pod tools set'
   s.authors     = ['dacaiguoguo']
   s.email       = 'dacaiguoguo@gmail.com'
-  s.files       = ['lib/PodfileTool.rb']
+  s.files       = ['lib/pod_tool.rb']
   s.homepage    = 'http://rubygems.org/gems/podtool'
   s.license = 'MIT'
   s.executables << 'podtool'

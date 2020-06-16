@@ -106,7 +106,8 @@ class PodTool
         if search_paths.is_a? Array
           search_paths.delete_if { |e| e == frame_search_path }
         end
-        puts search_paths
+        puts "FRAMEWORK_SEARCH_PATHS:#{search_paths.class}"
+        puts "FRAMEWORK_SEARCH_PATHS:#{search_paths}"
       end
     end
     project.save
