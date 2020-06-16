@@ -5,7 +5,7 @@ require 'commander/import'
 require 'PodfileTool'
 
 program :name, 'podtool'
-program :version, '0.0.3'
+program :version, '0.0.4'
 program :description, 'pod tools set'
 
 command :parse do |c|
