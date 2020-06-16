@@ -52,7 +52,6 @@ class PodTool
     puts "pods_project_path: #{pods_project_path}"
     project = Xcodeproj::Project.open(pods_project_path)
     project.targets.each do |e|
-      next unless e.product_type == 'com.apple.product-type.framework' && !e.name.start_with?('Pod')
       begin
         Xcodeproj::XCScheme.share_scheme(project.path, e.name)
         puts "Success share #{e.name}"
